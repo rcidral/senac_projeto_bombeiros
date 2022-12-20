@@ -1,0 +1,30 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "npm init -y\r yarn add -D typescript nodemon ts-node @types/express @types/node\r yarn add express mysql2 typeorm dotenv reflect-metadata\r npx tsc --init",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --exec ts-node ./src/index.ts",
+    "build": "tsc",
+    "buildrun": "yarn run build && yarn start",
+    "migration:generate": "typeorm-ts-node-commonjs -d ./src/data-source.ts migration:generate ./src/migrations/default",
+    "migration:run": "typeorm-ts-node-commonjs -d ./src/data-source.ts migration:run"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/express": "^4.17.15",
+    "@types/node": "^18.11.17",
+    "nodemon": "^2.0.20",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mysql2": "^2.3.3",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "^0.3.11"
+  }
+}
