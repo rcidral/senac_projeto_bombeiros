@@ -22,7 +22,7 @@ class ResponseController {
     }
     async findOne(req, res) {
         const { id } = req.params;
-        const response = await responseRepository_1.responseRepository.findOneBy({ id: Number(id) });
+        const response = await responseRepository_1.responseRepository.find({ where: { id: Number(id) }, relations: ["vehicle_id", "quiz_id"] });
     }
     async update(req, res) {
         const { id } = req.params;

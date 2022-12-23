@@ -28,7 +28,7 @@ class UnityController {
     async findOne(req, res) {
         const id = req.params.id;
         try {
-            const unity = await unityRepository_1.unityRepository.findOneBy({ id: Number(id) });
+            const unity = await unityRepository_1.unityRepository.find({ where: { id: Number(id) }, relations: ["organization_id"] });
             return res.status(200).json(unity);
         }
         catch (error) {

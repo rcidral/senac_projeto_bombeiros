@@ -23,7 +23,7 @@ class ResponseQuestionController {
     async findOne(req, res) {
         const id = req.params.id;
         try {
-            const responseQuestion = await responseQuestionRepository_1.responseQuestionRepository.findOneBy({ id: Number(id) });
+            const responseQuestion = await responseQuestionRepository_1.responseQuestionRepository.find({ where: { id: Number(id) }, relations: ["response_id", "quiz_question_id", "quiz_response_id"] });
             return res.status(200).json(responseQuestion);
         }
         catch (error) {

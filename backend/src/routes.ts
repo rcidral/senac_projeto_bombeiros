@@ -7,8 +7,11 @@ import { ResponseController } from "./controllers/ResponseController"
 import { UnityController } from "./controllers/UnityController"
 import { UserController } from "./controllers/UserController"
 import { VehicleController } from "./controllers/VehicleController"
+import { authMiddleware } from "./middlewares/authMiddleware";
 
 const routes = Router();
+
+routes.use(authMiddleware);
 
 routes.post('/organization', new OrganizationController().create);
 routes.post('/quiz', new QuizController().create);
@@ -18,6 +21,7 @@ routes.post('/Response', new ResponseController().create);
 routes.post('/unity', new UnityController().create);
 routes.post('/user', new UserController().create);
 routes.post('/vehicle', new VehicleController().create);
+routes.post('/login', new UserController().login);
 
 routes.get('/organization', new OrganizationController().findAll);
 routes.get('/quiz', new QuizController().findAll);
@@ -27,6 +31,7 @@ routes.get('/Response', new ResponseController().findAll);
 routes.get('/unity', new UnityController().findAll);
 routes.get('/user', new UserController().findAll);
 routes.get('/vehicle', new VehicleController().findAll);
+routes.get('/profile', new UserController().getProfile);
 
 routes.get('/organization/:id', new OrganizationController().findOne);
 routes.get('/quiz/:id', new QuizController().findOne);

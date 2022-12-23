@@ -28,7 +28,7 @@ class QuizQuestionController {
     async findOne(req, res) {
         const id = req.params.id;
         try {
-            const quizQuestion = await quizQuestionRepository_1.quizQuestionRepository.findOneBy({ id: Number(id) });
+            const quizQuestion = await quizQuestionRepository_1.quizQuestionRepository.find({ where: { id: Number(id) }, relations: ["quiz_id"] });
             return res.status(200).json(quizQuestion);
         }
         catch (error) {

@@ -34,7 +34,7 @@ class VehicleController {
         const id = req.params.id;
         const requisicao = req.body;
         try {
-            const vehicle = await vehicleRepository_1.vehicleRepository.findOneBy({ id: Number(id) });
+            const vehicle = await vehicleRepository_1.vehicleRepository.find({ where: { id: Number(id) }, relations: ["unity_id"] });
             if (!vehicle) {
                 return res.status(404).json({ message: "Veículo não encontrado" });
             }
